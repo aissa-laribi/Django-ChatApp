@@ -9,7 +9,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'docker volume create alpine-django'
+                sh 'uname -a'
             }
         }
         stage('Test') {
