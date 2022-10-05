@@ -9,7 +9,15 @@ pipeline {
                 }
             }
             steps {
-                sh 'uname -a'
+                sh 'apk add python3'
+                sh 'python3 -m ensurepip --upgrade'
+                sh '/usr/bin/python3 -m pip install --upgrade pip'
+                sh 'apk add git'
+                sh 'git clone https://github.com/rustyxlol/Django-ChatApp.git'
+                sh 'cd Django-ChatApp'
+                sh 'python3 -m pip install -r requirements.txt'
+                sh 'pip install channels --user'
+                sh 'python3 manage.py runserver 0.0.0.0:8000'
             }
         }
         stage('Test') {
