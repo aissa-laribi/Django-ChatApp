@@ -3,8 +3,13 @@ pipeline {
 
     stages {
         stage('Build') {
+            agent {
+                docker {
+                    image 'alpine'
+                }
+            }
             steps {
-                echo 'Building..'
+                sh 'docker volume create alpine-django'
             }
         }
         stage('Test') {
